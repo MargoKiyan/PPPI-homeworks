@@ -1,0 +1,88 @@
+openapi: 3.0.0
+info:
+  title: Password Generator API
+  version: 1.0.0
+  description: >
+    Простий API для генерації випадкових паролів та перевірки стану сервісу.
+
+servers:
+  - url: http://localhost:3000
+    description: Local development
+
+paths:
+  /api/health:
+    get:
+      summary: Перевірка стану сервісу
+      description: Повертає статус роботи API.
+      responses:
+        "200":
+          description: Сервіс працює
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+
+  /api/password:
+    get:
+      summary: Згенерувати пароль
+      description: >
+        Генерує випадковий пароль на основі параметрів запиту.
+        Якщо всі прапорці (lower, upper, numbers, symbols) вимкнені,
+        використовується набір малих літер за замовчуванням.
+      parameters:
+        - in: query
+          name: length
+          schema:
+            type: integer
+            minimum: 6
+            maximum: 32
+            default: 12
+          description: Бажана довжина пароля (буде обмежена до 6–32)
+        - in: query
+          name: lower
+          schema:
+            type: string
+            enum: ["true", "false"]
+            default: "true"
+          description: Чи використовувати малі літери
+        - in: query
+          name: upper
+          schema:
+            type: string
+            enum: ["true", "false"]
+            default: "true"
+          description: Чи використовувати великі літери
+        - in: query
+          name: numbers
+          schema:
+            type: string
+            enum: ["true", "false"]
+            default: "true"
+          description: Чи використовувати цифри
+        - in: query
+          name: symbols
+          schema:
+            type: string
+            enum: ["true", "false"]
+            default: "false"
+          description: Чи використовувати спецсимволи
+      responses:
+        "200":
+          description: Успішно згенерований пароль
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  password:
+                    type: string
+                    description: Згенерований пароль
+                    example: a8F#9kLm2!
+        "400":
+          description: Некоректні параметри запиту
+        "500":
+          description: Внутрішня помилка сервера
