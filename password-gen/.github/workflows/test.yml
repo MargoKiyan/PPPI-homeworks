@@ -2,8 +2,14 @@ name: Tests
 
 on:
   push:
-    branches: ["**"]
+    branches:
+      - main
+      - master
+      - feature/**
   pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
   test:
