@@ -1,6 +1,6 @@
 # Password Generator (tests)
 
-![Tests](https://github.com/MargoKiyan/PPPI-homeworks/actions/workflows/tests.yml/badge.svg)
+![Tests](https://github.com/MargoKiyan/PPPI-homeworks/actions/workflows/test.yml/badge.svg)
 
 ---
 
