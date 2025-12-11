@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Генератор паролів</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <section class="header">
+        <p class="eyebrow">Український сервіс</p>
+        <h1>Створіть надійний пароль</h1>
+        <p class="subhead">
+          Обирайте параметри та отримуйте результат миттєво.
+        </p>
+      </section>
+
+      <section class="output">
+        <input id="password" readonly />
+        <button id="copy" aria-label="Скопіювати пароль">Копіювати</button>
+      </section>
+
+      <section class="controls">
+        <label class="slider">
+          <span>Довжина: <strong id="length-label">12</strong></span>
+          <input id="length" type="range" min="6" max="32" value="12" />
+        </label>
+
+        <div class="toggles">
+          <label>
+            <input type="checkbox" id="lower" checked /> Малі літери</label>
+          <label>
+            <input type="checkbox" id="upper" checked /> Великі літери</label>
+          <label><input type="checkbox" id="numbers" checked /> Цифри</label>
+          <label><input type="checkbox" id="symbols" /> Символи</label>
+        </div>
+      </section>
+
+      <section class="actions">
+        <button id="generate">Згенерувати</button>
+      </section>
+
+      <p class="hint">
+        Генерація виконується лише у вашому браузері.<br />Автори: Киян
+        Маргарита та Солдатов Андрій.
+      </p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
